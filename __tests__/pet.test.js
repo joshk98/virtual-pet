@@ -53,5 +53,51 @@ describe('walk', () => {
 
         expect(pet.fitness).toEqual(8);
     });
+    
+    test('increases fitness to a maximum of 10', () => {
+        const pet = new Pet('Fido');
+
+        pet.fitness = 8;
+        pet.walk();
+
+        expect(pet.fitness).toEqual(10);
+    });
 });
 
+describe('feed', () => {
+    test('decreses hunger by 3', () => {
+        const pet = new Pet('Fido');
+
+        pet.hunger = 5;
+        pet.feed();
+
+        expect(pet.hunger).toEqual(2);
+    });
+    
+    test('decreases hunger to a minimum of 0', () => {
+        const pet = new Pet('Fido');
+
+        pet.hunger = 2;
+        pet.feed();
+
+        expect(pet.hunger).toEqual(0);
+    });
+});
+
+describe('checkUp', () => (
+    test('if the pet\'s fitness is 3 or less, it should return \'I need a walk', () => {
+
+    });
+
+    test('if the pet\'s hunger is 5 or more, it should return \'I am hungry', () => {
+
+    });
+
+    test('if both of the above are true, it should return \'I am hungry AND I need a walk', () => {
+
+    });
+
+    test('if neither of the above are true, it should return \'I feel great!', () => {
+
+    });
+));
