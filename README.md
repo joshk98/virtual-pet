@@ -1,6 +1,7 @@
 JavaScript Pet
 
 Do you love pets but can't have one for various reasons? Fear not, with the JavaScript Pet project, you can have your own virtual pet without any of the drawbacks of real pets. JavaScript Pets are made of code and can do literally anything, and they don't even leave a mess!
+
 Features
 
 The JavaScript Pet project lets you create and take care of your own virtual pet. Some of the features of the project include:
