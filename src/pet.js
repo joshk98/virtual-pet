@@ -1,8 +1,12 @@
+const MIN_AGE = 0; // minimum age value
+const MIN_HUNGER = 0; // minimum hunger value
+const MAX_FITNESS = 10; // maximum fitness value
+
 function Pet(name) {
     this.name = name;
-    this.age = 0;
-    this.hunger = 0;
-    this.fitness = 10;
+    this.age = MIN_AGE;
+    this.hunger = MIN_HUNGER;
+    this.fitness = MAX_FITNESS;
     this.children = [];
 }
 
@@ -24,7 +28,6 @@ Pet.prototype.growUp = function() {
 
 Pet.prototype.walk = function() {
     const INCREMENT_WALK = 4; // amount summed to fitness value as a result of walk()
-    const MAX_FITNESS = 10; // maximum fitness value
   
     if (!this.isAlive) {
         throw new Error('Your pet is no longer alive :(');
@@ -37,7 +40,6 @@ Pet.prototype.walk = function() {
 
 Pet.prototype.feed = function() {
     const INCREMENT_FEED = 3; // amount summed to hunger value as a result of feed()
-    const MIN_HUNGER = 0; // minimum hunger value
 
     if (!this.isAlive) {
         throw new Error('Your pet is no longer alive :(');   
