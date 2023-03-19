@@ -2,17 +2,98 @@ JavaScript Pet
 
 Do you love pets but can't have one for various reasons? Fear not, with the JavaScript Pet project, you can have your own virtual pet without any of the drawbacks of real pets. JavaScript Pets are made of code and can do literally anything, and they don't even leave a mess!
 
+
 Features
 
-The JavaScript Pet project lets you create and take care of your own virtual pet. Some of the features of the project include:
+This code simulates the behavior of a virtual pet. It defines a Pet class that can be instantiated with a name and has properties for age, hunger, fitness, and an array of children.
 
-    Naming your pet: Give your virtual pet a unique name of your choice.
-    Aging: Your pet will age over time, and as it gets older, it will get hungrier and less fit.
-    Walking: You can take your pet for a walk to increase its fitness. The more you walk it, the fitter it will become.
-    Feeding: You can feed your pet to decrease its hunger. Keep an eye on its hunger levels to make sure it doesn't get too hungry.
-    Talking: You can talk to your pet to see if it needs feeding or walking. Your pet will let you know if it's hungry or needs exercise.
-    Death: If your pet gets too hungry or unfit, it will die. Also, if your pet reaches 30 days old, it will die of old age.
+The Pet class also defines several methods to interact with the pet, such as growUp, walk, feed, checkUp, adoptChild, and haveBaby.
 
-How to use
 
-To use the JavaScript Pet project, simply run the program. You'll be prompted to choose a name for your pet, and then you can start taking care of it. Use the available commands to feed, walk, and talk to your pet. Make sure you keep an eye on your pet's hunger and fitness levels, so it doesn't die prematurely.
+Getting Started
+
+Clone or download this repository and run npm install to install the necessary dependencies.
+
+To use the Pet class, require it in your own code:
+
+const Pet = require('./src/pet');
+
+To create a new pet, simply instantiate the Pet class:
+
+const pet = new Pet('Fido');
+
+
+Properties
+
+    name: the name of the pet
+    age: the age of the pet (initially 0)
+    hunger: the hunger level of the pet (initially 0)
+    fitness: the fitness level of the pet (initially 10)
+    children: an array of child pets (initially empty)
+
+
+Methods
+
+growUp()
+
+Increases the pet's age by 1, hunger by 5, and decreases fitness by 3. Throws an error if the pet is no longer alive (age >= 30 or hunger >= 10 or fitness <= 0).
+
+Example:
+
+pet.growUp();
+
+
+walk()
+
+Increases the pet's fitness by 4 (up to a maximum of 10). Throws an error if the pet is no longer alive.
+
+Example:
+
+pet.walk();
+
+
+feed()
+
+Decreases the pet's hunger by 3 (down to a minimum of 0). Throws an error if the pet is no longer alive.
+
+Example:
+
+pet.feed();
+
+
+checkUp()
+
+Returns a string indicating the pet's current state:
+
+    "I am hungry AND I need a walk" if the pet's hunger is 5 or more and fitness is 3 or less
+    "I need a walk" if the pet's fitness is 3 or less
+    "I am hungry" if the pet's hunger is 5 or more
+    "I feel great!" if none of the above
+
+Example:
+
+pet.checkUp(); // "I feel great!"
+
+
+adoptChild(child)
+
+Adds a child pet to the children array. Throws an error if the pet or the child is no longer alive.
+
+Example:
+
+const child = new Pet('Puppy');
+pet.adoptChild(child);
+
+
+haveBaby(baby)
+
+Adds a new child pet to the children array. Throws an error if the pet is no longer alive.
+
+Example:
+
+pet.haveBaby('Kitten');
+
+
+Running the Tests
+
+To run the tests, use the npm test command. The tests are defined in the __tests__ directory.
