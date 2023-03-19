@@ -16,6 +16,24 @@ describe('constructor', () => {
 
         expect(pet.age).toEqual(0);
     });
+
+    test('has an initial hunger of 0', () => {
+        const pet = new Pet('Fido');
+
+        expect(pet.hunger).toEqual(0);
+    });
+
+    test('has an initial fitness of 10', () => {
+        const pet = new Pet('Fido');
+
+        expect(pet.fitness).toEqual(10);
+    });
+
+    test('has an array for children that is initially empty', () => {
+        const pet = new Pet('Fido');
+
+        expect(pet.children).toEqual([]);
+    });
 });
 
 describe('growUp', () => {
@@ -43,7 +61,7 @@ describe('growUp', () => {
         expect(pet.fitness).toEqual(7);
     });
 
-    test('if the pet is not alive, the walk, growUp and feed functions should each throw an exception \'Your pet is no longer alive :(\'', () => {
+    test('if the pet is not alive, the growUp function should throw an exception \'Your pet is no longer alive :(\'', () => {
         const pet = new Pet('Fido');
 
         pet.age = 30;
@@ -71,7 +89,7 @@ describe('walk', () => {
         expect(pet.fitness).toEqual(10);
     });
 
-    test('if the pet is not alive, the walk, growUp and feed functions should each throw an exception \'Your pet is no longer alive :(\'', () => {
+    test('if the pet is not alive, the walk function should throw an exception \'Your pet is no longer alive :(\'', () => {
         const pet = new Pet('Fido');
 
         pet.fitness = 0;
@@ -99,7 +117,7 @@ describe('feed', () => {
         expect(pet.hunger).toEqual(0);
     });
 
-    test('if the pet is not alive, the walk, growUp and feed functions should each throw an exception \'Your pet is no longer alive :(\'', () => {
+    test('if the pet is not alive, the feed function should throw an exception \'Your pet is no longer alive :(\'', () => {
         const pet = new Pet('Fido');
 
         pet.hunger = 10;
@@ -186,4 +204,83 @@ describe('isAlive', () => {
 
         expect(pet.isAlive).toEqual(true);
     });
-})
+});
+
+describe('adoptChild', () => {
+    test('call the method on the parent pet which allows you to pass child as an argument', () => {
+        const pet = new Pet('Fido');
+        const child = new Pet('Josh');
+        
+        pet.adoptChild(child);
+
+        expect(pet.children).toEqual([ { name: 'Josh', age: 0, hunger: 0, fitness: 10, children: [] } ]);
+    });
+
+    test('the first element of the parent\'s children array is the first child instance passed, and so on', () => {
+        const pet = new Pet('Fido');
+        const child = new Pet('Josh');
+        const child2 = new Pet('Shrek');
+        
+        pet.adoptChild(child);
+        pet.adoptChild(child2);
+
+        expect(pet.children[0]).toEqual({ name: 'Josh', age: 0, hunger: 0, fitness: 10, children: [] });
+    });
+
+    test('call methods on children array from within parent object', () => {
+        const pet = new Pet('Fido');
+        const child = new Pet('Josh');
+        
+        pet.adoptChild(child);
+        pet.children[0].growUp();
+        pet.children[0].feed();
+
+        expect(pet.children[0].hunger).toEqual(2);
+    });
+
+    test('if the pet is not alive, the adoptChild function should throw an exception \'Your pet is no longer alive :(\'', () => {
+        const pet = new Pet('Fido');
+        const child = new Pet('Josh');
+        
+        pet.hunger = 10;
+
+        expect(() => pet.adoptChild(child)).toThrow('Your pet is no longer alive :(');
+    });
+
+    test('if the child being adopted is not alive, the adoptChild function should throw an exception \'The child you want to adopt is no longer alive :(\'', () => {
+        const pet = new Pet('Fido');
+        const child = new Pet('Josh');
+        
+        child.hunger = 10;
+
+        expect(() => pet.adoptChild(child)).toThrow('The child you want to adopt is no longer alive :(');
+    });
+});
+
+describe('haveBaby', () => {
+    test('call the method on the parent pet which allows you to pass the child\'s name in as an argument', () => {
+        const pet = new Pet('Fido');
+        
+        pet.haveBaby('Josh');
+
+        expect(pet.children).toEqual([ { name: 'Josh', age: 0, hunger: 0, fitness: 10, children: [] } ]);
+    });
+
+    test('the first element of the parent\'s children array is the first child instance passed, and so on', () => {
+        const pet = new Pet('Fido');
+        const child = new Pet('Josh');
+        
+        pet.adoptChild(child);
+        pet.haveBaby('Shrek');
+
+        expect(pet.children[1]).toEqual({ name: 'Shrek', age: 0, hunger: 0, fitness: 10, children: [] });
+    });
+
+    test('if the pet is not alive, the haveBaby function should throw an exception \'Your pet is no longer alive :(\'', () => {
+        const pet = new Pet('Fido');
+
+        pet.hunger = 10;
+
+        expect(() => pet.haveBaby('Josh')).toThrow('Your pet is no longer alive :(');
+    });
+});
