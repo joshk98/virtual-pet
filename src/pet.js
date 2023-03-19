@@ -51,8 +51,8 @@ Pet.prototype.feed = function() {
 }
 
 Pet.prototype.checkUp = function() {
-    CHECKUP_HUNGER = 5; // desired level of hunger for checkUp function
-    CHECKUP_FITNESS = 3; // desired level of fitness for checkUp function
+    const CHECKUP_HUNGER = 5; // desired level of hunger for checkUp function
+    const CHECKUP_FITNESS = 3; // desired level of fitness for checkUp function
 
     if (!this.isAlive) {
         return 'Your pet is no longer alive :(';    
