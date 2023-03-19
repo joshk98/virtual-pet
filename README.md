@@ -82,6 +82,7 @@ Adds a child pet to the children array. Throws an error if the pet or the child 
 Example:
 
 const child = new Pet('Puppy');
+
 pet.adoptChild(child);
 
 
