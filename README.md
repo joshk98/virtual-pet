@@ -16,11 +16,11 @@ Clone or download this repository and run npm install to install the necessary d
 
 To use the Pet class, require it in your own code:
 
-const Pet = require('./src/pet');
+    const Pet = require('./src/pet');
 
 To create a new pet, simply instantiate the Pet class:
 
-const pet = new Pet('Fido');
+    const pet = new Pet('Fido');
 
 
 <h2>Properties</h2>
@@ -40,7 +40,7 @@ Increases the pet's age by 1, hunger by 5, and decreases fitness by 3. Throws an
 
 Example:
 
-pet.growUp();
+    pet.growUp();
 
 
 <h3>walk()</h3>
@@ -49,7 +49,7 @@ Increases the pet's fitness by 4 (up to a maximum of 10). Throws an error if the
 
 Example:
 
-pet.walk();
+    pet.walk();
 
 
 <h3>feed()</h3>
@@ -58,7 +58,7 @@ Decreases the pet's hunger by 3 (down to a minimum of 0). Throws an error if the
 
 Example:
 
-pet.feed();
+    pet.feed();
 
 
 <h3>checkUp()</h3>
@@ -72,7 +72,7 @@ Returns a string indicating the pet's current state:
 
 Example:
 
-pet.checkUp(); // "I feel great!"
+    pet.checkUp(); // "I feel great!"
 
 
 <h3>adoptChild(child)</h3>
@@ -81,9 +81,9 @@ Adds a child pet to the children array. Throws an error if the pet or the child 
 
 Example:
 
-const child = new Pet('Puppy');
+    const child = new Pet('Puppy');
 
-pet.adoptChild(child);
+    pet.adoptChild(child);
 
 
 <h3>haveBaby(baby)</h3>
@@ -92,7 +92,7 @@ Adds a new child pet to the children array. Throws an error if the pet is no lon
 
 Example:
 
-pet.haveBaby('Kitten');
+    pet.haveBaby('Kitten');
 
 
 <h2>Running the Tests</h2>
