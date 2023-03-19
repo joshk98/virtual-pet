@@ -1,6 +1,6 @@
 const MIN_AGE = 0; // minimum age value
 const MIN_HUNGER = 0; // minimum hunger value
-const MAX_FITNESS = 10; // maximum fitness value
+cost MAX_FITNESS = 10; // maximum fitness value
 
 function Pet(name) {
     this.name = name;

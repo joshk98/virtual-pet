@@ -1,4 +1,4 @@
-const Pet = require('../src/pet');
+cost Pet = require('../src/pet');
 
 describe('constructor', () => {
     test('returns an object', () => {
