@@ -143,7 +143,7 @@ describe('checkUp', () => {
         expect(pet.checkUp()).toEqual('I am hungry');
     });
 
-    test('if both of the above are true, it should return \'I am hungry AND I need a walk\'', () => {
+    test('if pet\'s fitness is 3 or less and hunger is 5 or more, it should return \'I am hungry AND I need a walk\'', () => {
         const pet = new Pet('Fido');
 
         pet.fitness = 3;
@@ -152,7 +152,7 @@ describe('checkUp', () => {
         expect(pet.checkUp()).toEqual('I am hungry AND I need a walk');
     });
 
-    test('if neither of the above are true, it should return \'I feel great!\'', () => {
+    test('if fitness is more than 3 and hunger is less than 5, it should return \'I feel great!\'', () => {
         const pet = new Pet('Fido');
 
         pet.fitness = 4;
@@ -195,7 +195,7 @@ describe('isAlive', () => {
         expect(pet.isAlive).toEqual(false);
     });
 
-    test('if none of the above statements are false, it should return true', () => {
+    test('if age is less than 30, hunger is less than 10, and fitness is more than 0, it should return true', () => {
         const pet = new Pet('Fido');
 
         pet.fitness = 1;
@@ -213,7 +213,7 @@ describe('adoptChild', () => {
         
         pet.adoptChild(child);
 
-        expect(pet.children).toEqual([ { name: 'Josh', age: 0, hunger: 0, fitness: 10, children: [] } ]);
+        expect(pet.children).toEqual([child]);
     });
 
     test('the first element of the parent\'s children array is the first child instance passed, and so on', () => {
@@ -224,7 +224,7 @@ describe('adoptChild', () => {
         pet.adoptChild(child);
         pet.adoptChild(child2);
 
-        expect(pet.children[0]).toEqual({ name: 'Josh', age: 0, hunger: 0, fitness: 10, children: [] });
+        expect(pet.children[0]).toEqual(child);
     });
 
     test('call methods on children array from within parent object', () => {
